@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+body { @apply bg-white text-muted-800 antialiased; }
+.container { @apply max-w-6xl mx-auto px-4; }
+.section { @apply py-12 md:py-16; }
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+  
+  /* Disable Sheet animations */
+  [data-radix-dialog-content] {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  [data-radix-dialog-overlay] {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Disable custom sheet animations */
+  .animate-sheet-in-right,
+  .animate-sheet-out-right,
+  .animate-overlay-fade-in,
+  .animate-overlay-fade-out,
+  .animate-glass-in,
+  .animate-glass-out,
+  .animate-pulse-soft {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(4px)) {
+  [data-radix-dialog-overlay] {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: none !important;
+  }
+  
+  [data-radix-dialog-content] {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: none !important;
+  }
+}
+
+
+/* Focus styles for section anchors */
+[data-section-anchor]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+[data-section-anchor]:focus-visible {
+  outline: 2px solid hsl(142, 50%, 35%);
+  outline-offset: 2px;
+}

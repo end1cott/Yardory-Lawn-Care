@@ -1,0 +1,16 @@
+{
+  "name": "Yardory - Lawn Care in Northeast Philly",
+  "short_name": "Yardory",
+  "description": "Reliable lawn mowing, edging & hedge trimming. Book in 45 seconds.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#22c55e",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ]
+}

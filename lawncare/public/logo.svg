@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <title>Yardory Icon — Soft Rounded Y</title>
+  <rect width="1024" height="1024" fill="#ffffff"/>
+  <path d="M340,950
+           C330,680 350,470 250,220
+           C240,195 230,170 220,150
+           C330,250 430,330 500,430
+           C540,485 560,560 560,950 Z" fill="#1F7A3D"/>
+  <path d="M684,950
+           C694,680 672,470 772,220
+           C782,195 792,170 802,150
+           C692,250 592,330 522,430
+           C482,485 462,560 462,950 Z" fill="#61C13A"/>
+  <!-- Rounded Y made of strokes -->
+  <g stroke="#ffffff" stroke-width="120" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Stem -->
+    <path d="M512 980 L512 610"/>
+    <!-- Left arm -->
+    <path d="M512 610 Q 460 520 360 440 T -120 -120"/>
+    <!-- Right arm -->
+    <path d="M512 610 Q 564 520 664 440 T 1144 -120"/>
+  </g>
+</svg>
