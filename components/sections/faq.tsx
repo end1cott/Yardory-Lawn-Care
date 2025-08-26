@@ -13,11 +13,16 @@ export default function FAQ() {
   return (
     <section id="faq" className="section bg-muted-50 scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
       <div className="container">
-        <h2 className="text-2xl font-semibold mb-6">FAQ</h2>
-        <Accordion type="single" collapsible className="rounded-xl border bg-white shadow-soft">
+        <h2 className="text-2xl font-semibold mb-6 animate-fade-in-up">FAQ</h2>
+        <Accordion type="single" collapsible className="rounded-xl border bg-white shadow-soft animate-fade-in-up delay-200">
           {QA.map((x, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-b last:border-b-0">
-              <AccordionTrigger className="px-4 py-4 text-left font-medium hover:no-underline">
+            <AccordionItem 
+              key={i} 
+              value={`item-${i}`} 
+              className="border-b last:border-b-0 animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
+              <AccordionTrigger className="px-4 py-4 text-left font-medium hover:no-underline transition-all duration-300 hover:bg-muted-50">
                 {x.q}
               </AccordionTrigger>
               <AccordionContent className="px-4 opacity-90">

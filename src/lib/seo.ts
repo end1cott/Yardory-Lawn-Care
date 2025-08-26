@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { localizedPath, type Lang } from './i18n'
 
 export const SITE = {
-  name: 'Yardory',
+  name: 'MowJet',
   phone: '+1 (929) 704-4141',
-  ogImage: '/yardory/og.jpg',   // local 1200x630
+  ogImage: '/mowjet/og.jpg',   // local 1200x630
   defaultTitle: 'Reliable Lawn Care in Northeast Philly — Book in 45s',
   defaultDesc: 'Mow, edge & hedge trimming. Route-day discount if we service your area on our route day.',
 } as const
@@ -28,7 +28,7 @@ export function buildMetadata(opts: {
   }
 
   return {
-    title: title ? `${title} | Yardory` : `${SITE.defaultTitle} | Yardory`,
+    title: title ? `${title} | MowJet` : `${SITE.defaultTitle} | MowJet`,
     description: description ?? SITE.defaultDesc,
     alternates: {
       // only language alternates; do NOT set canonical when base is null

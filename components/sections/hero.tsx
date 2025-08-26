@@ -13,28 +13,31 @@ export default function Hero() {
   return (
     <section className="section bg-gradient-to-br from-muted-50 to-white">
       <div className="container grid items-center gap-10 md:grid-cols-2">
-        <div className="space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-r from-muted-800 to-muted-600 bg-clip-text text-transparent">
+        <div className="space-y-6 animate-fade-in-up">
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-r from-muted-800 to-muted-600 bg-clip-text text-transparent animate-fade-in-up delay-200">
             {t.heroH1}
           </h1>
-          <p className="text-lg text-muted-600 leading-relaxed">{t.sub}</p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a href="/quote">
+          <p className="text-lg text-muted-600 leading-relaxed animate-fade-in-up delay-400">{t.sub}</p>
+          <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up delay-600">
+            <a href="/quote" className="group">
               <Button 
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto hover:scale-105 transition-all duration-300 group-hover:shadow-lg"
                 aria-label={lang === 'ru' ? 'Получить мгновенный расчёт' : 'Get instant quote'}
               >
                 {t.ctaQuote}
               </Button>
             </a>
-            <a href={`tel:${PHONE_E164}`}>
-              <Button variant="outline" className="w-full sm:w-auto">
+            <a href={`tel:${PHONE_E164}`} className="group">
+              <Button 
+                variant="outline" 
+                className="w-full sm:w-auto hover:scale-105 transition-all duration-300 group-hover:shadow-lg"
+              >
                 {t.ctaCall}
               </Button>
             </a>
           </div>
         </div>
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-soft">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-soft animate-fade-in-right hover:scale-105 transition-transform duration-500">
           <Image
             src="/hero-image.jpg"
             alt="Professional lawn care service"

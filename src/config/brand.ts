@@ -1,9 +1,9 @@
 export const BRAND_CONFIG = {
-  NAME: "Yardory",
+  NAME: "MowJet",
   PHONE_DISPLAY: "929 (704) - 4141",
   PHONE_E164: "+19297044141",
-  EMAIL_GENERAL: "hello@yardory.com",
-  EMAIL_PRIVACY: "privacy@yardory.com",
+  EMAIL_GENERAL: "hello@mowjet.com",
+  EMAIL_PRIVACY: "privacy@mowjet.com",
   ADDRESS_CITY: "Philadelphia, PA",
 } as const
 

@@ -1,15 +1,15 @@
 import { z } from 'zod'
 
 export const LeadSchema = z.object({
-  name: z.string().min(2),
-  phone: z.string().min(7),
-  email: z.string().email(),
-  address: z.string().min(3),
-  city: z.string().min(2),
-  zip: z.string().min(3),
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  phone: z.string().min(7, 'Phone number must be at least 7 digits'),
+  email: z.string().email('Please enter a valid email address'),
+  address: z.string().min(3, 'Address must be at least 3 characters'),
+  city: z.string().min(2, 'City must be at least 2 characters'),
+  zip: z.string().min(3, 'ZIP code must be at least 3 characters'),
   lot: z.enum(['0.1','0.25','0.5']),
   freq: z.enum(['weekly','bi-weekly','one-time']),
-  services: z.array(z.enum(['mow','edge','hedge','bagging'])).min(1),
+  services: z.array(z.enum(['mow','edge','hedge','bagging'])).min(1, 'Please select at least one service'),
   notes: z.string().optional(),
 })
 

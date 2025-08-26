@@ -1,4 +1,4 @@
-# Yardory - Next.js Lawn Care Website
+# MowJet - Next.js Lawn Care Website
 
 A complete, production-ready lawn care website built with Next.js 15, TypeScript, Tailwind CSS, and custom shadcn-style UI components.
 

@@ -20,11 +20,11 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b bg-white/90 backdrop-blur animate-slide-down">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 text-lg font-semibold">
+        <Link href="/" className="flex items-center gap-3 text-lg font-semibold animate-fade-in-left">
           {/* Logo */}
-          <div className="relative w-8 h-8 shrink-0">
+          <div className="relative w-8 h-8 shrink-0 hover:scale-110 transition-transform duration-200">
             <Image
               src="/logo.svg"
               alt={`${NAME} logo`}
@@ -40,36 +40,50 @@ export default function Header() {
             />
             {/* Placeholder logo */}
             <div className="hidden w-8 h-8 rounded-full border-2 border-brand flex items-center justify-center bg-brand/10">
-              <span className="text-brand font-bold text-sm">Y</span>
-              <span className="sr-only">Yardory logo placeholder</span>
+              <span className="text-brand font-bold text-sm">M</span>
+              <span className="sr-only">MowJet logo placeholder</span>
             </div>
           </div>
           <span>{NAME}</span>
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden gap-6 md:flex">
-          <Link href="/#services" className="opacity-80 hover:opacity-100">{t.nav.services}</Link>
-          <Link href="/#pricing" className="opacity-80 hover:opacity-100">{t.nav.pricing}</Link>
-          <Link href="/#how-it-works" className="opacity-80 hover:opacity-100">How it works</Link>
-          <Link href="/#reviews" className="opacity-80 hover:opacity-100">{t.nav.reviews}</Link>
-          <Link href="/#service-area" className="opacity-80 hover:opacity-100">{t.nav.area}</Link>
-          <Link href="/#faq" className="opacity-80 hover:opacity-100">{t.nav.faq}</Link>
+        <nav className="hidden gap-6 md:flex animate-fade-in-up">
+          {[
+            { href: "/#services", label: t.nav.services, delay: "delay-100" },
+            { href: "/#pricing", label: t.nav.pricing, delay: "delay-200" },
+            { href: "/#how-it-works", label: "How it works", delay: "delay-300" },
+            { href: "/#reviews", label: t.nav.reviews, delay: "delay-400" },
+            { href: "/#service-area", label: t.nav.area, delay: "delay-500" },
+            { href: "/#faq", label: t.nav.faq, delay: "delay-600" }
+          ].map((link) => (
+            <Link 
+              key={link.href}
+              href={link.href} 
+              className={`opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-105 ${link.delay}`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden items-center gap-3 md:flex">
-          <Link href="/quote"><Button size="sm">{t.ctaQuote}</Button></Link>
+        <div className="hidden items-center gap-3 md:flex animate-fade-in-right">
+          <Link href="/quote">
+            <Button size="sm" className="hover:scale-105 transition-transform duration-200">
+              {t.ctaQuote}
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu */}
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-3 md:hidden animate-fade-in-right">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className={`p-2 transition-opacity ${isOpen ? 'invisible pointer-events-none' : ''}`}
+                className={`p-2 transition-all duration-200 hover:scale-110 ${isOpen ? 'invisible pointer-events-none' : ''}`}
                 aria-expanded={isOpen}
               >
                 <Menu className="h-5 w-5" />
@@ -101,8 +115,8 @@ export default function Header() {
                       />
                       {/* Placeholder logo */}
                       <div className="hidden w-8 h-8 rounded-full border-2 border-brand flex items-center justify-center bg-brand/10">
-                        <span className="text-brand font-bold text-sm">Y</span>
-                        <span className="sr-only">Yardory logo placeholder</span>
+                        <span className="text-brand font-bold text-sm">M</span>
+                        <span className="sr-only">MowJet logo placeholder</span>
                       </div>
                     </div>
                     <span className="text-lg font-semibold">{NAME}</span>
@@ -111,60 +125,36 @@ export default function Header() {
 
                 {/* Navigation Links */}
                 <nav className="flex-1 space-y-1 p-6">
-                  <Link 
-                    href="/#services" 
-                    className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
-                    onClick={handleNavClick}
-                  >
-                    {t.nav.services}
-                  </Link>
-                  <Link 
-                    href="/#pricing" 
-                    className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
-                    onClick={handleNavClick}
-                  >
-                    {t.nav.pricing}
-                  </Link>
-                  <Link 
-                    href="/#how-it-works" 
-                    className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
-                    onClick={handleNavClick}
-                  >
-                    How it works
-                  </Link>
-                  <Link 
-                    href="/#reviews" 
-                    className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
-                    onClick={handleNavClick}
-                  >
-                    {t.nav.reviews}
-                  </Link>
-                  <Link 
-                    href="/#service-area" 
-                    className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
-                    onClick={handleNavClick}
-                  >
-                    {t.nav.area}
-                  </Link>
-                  <Link 
-                    href="/#faq" 
-                    className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
-                    onClick={handleNavClick}
-                  >
-                    {t.nav.faq}
-                  </Link>
+                  {[
+                    { href: "/#services", label: t.nav.services },
+                    { href: "/#pricing", label: t.nav.pricing },
+                    { href: "/#how-it-works", label: "How it works" },
+                    { href: "/#reviews", label: t.nav.reviews },
+                    { href: "/#service-area", label: t.nav.area },
+                    { href: "/#faq", label: t.nav.faq }
+                  ].map((link, index) => (
+                    <Link 
+                      key={link.href}
+                      href={link.href} 
+                      className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-all duration-300 hover:translate-x-2"
+                      onClick={handleNavClick}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </nav>
 
                 {/* CTA Section */}
                 <div className="border-t p-6 space-y-3">
                   <Link href="/quote" className="w-full" onClick={handleNavClick}>
-                    <Button className="w-full h-11 text-base font-medium">
+                    <Button className="w-full h-11 text-base font-medium hover:scale-105 transition-transform duration-200">
                       {t.ctaQuote}
                     </Button>
                   </Link>
                   <a 
                     href={`tel:${PHONE_E164}`}
-                    className="flex h-11 items-center justify-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
+                    className="flex h-11 items-center justify-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-all duration-300 hover:scale-105"
                     onClick={handleNavClick}
                   >
                     Call {PHONE_DISPLAY}

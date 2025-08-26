@@ -30,7 +30,7 @@ export default function Page() {
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Yardory',
+    name: 'MowJet',
     potentialAction: {
       '@type': 'SearchAction',
       target: '/quote?address={search_term_string}',

@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     description: SITE.defaultDesc,
   },
   icons: {
-    icon: '/yardory/apple-touch-icon.png',
-    apple: '/yardory/apple-touch-icon.png',
+    icon: '/mowjet/apple-touch-icon.png',
+    apple: '/mowjet/apple-touch-icon.png',
   },
 }
 
