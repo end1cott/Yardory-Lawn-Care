@@ -2,11 +2,9 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
 import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet'
-import LanguageSwitch from './language-switch'
 import { useI18n } from './i18n-provider'
 import { NAME, PHONE_DISPLAY, PHONE_E164 } from '@/src/config/brand'
 import en from '@/locales/en'
@@ -15,14 +13,11 @@ import ru from '@/locales/ru'
 export default function Header() {
   const { lang } = useI18n()
   const t = lang === 'ru' ? ru : en
-  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
   const handleNavClick = () => {
     setIsOpen(false)
   }
-
-  const isHomePage = pathname === '/'
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white/90 backdrop-blur">
@@ -54,23 +49,21 @@ export default function Header() {
         
         {/* Desktop Navigation */}
         <nav className="hidden gap-6 md:flex">
-          <a href="/#services" className="opacity-80 hover:opacity-100">{t.nav.services}</a>
-          <a href="/#pricing" className="opacity-80 hover:opacity-100">{t.nav.pricing}</a>
-          <a href="/#how-it-works" className="opacity-80 hover:opacity-100">How it works</a>
-          <a href="/#reviews" className="opacity-80 hover:opacity-100">{t.nav.reviews}</a>
-          <a href="/#service-area" className="opacity-80 hover:opacity-100">{t.nav.area}</a>
-          <a href="/#faq" className="opacity-80 hover:opacity-100">{t.nav.faq}</a>
+          <Link href="/#services" className="opacity-80 hover:opacity-100">{t.nav.services}</Link>
+          <Link href="/#pricing" className="opacity-80 hover:opacity-100">{t.nav.pricing}</Link>
+          <Link href="/#how-it-works" className="opacity-80 hover:opacity-100">How it works</Link>
+          <Link href="/#reviews" className="opacity-80 hover:opacity-100">{t.nav.reviews}</Link>
+          <Link href="/#service-area" className="opacity-80 hover:opacity-100">{t.nav.area}</Link>
+          <Link href="/#faq" className="opacity-80 hover:opacity-100">{t.nav.faq}</Link>
         </nav>
 
         {/* Desktop CTA */}
         <div className="hidden items-center gap-3 md:flex">
-          <LanguageSwitch />
           <Link href="/quote"><Button size="sm">{t.ctaQuote}</Button></Link>
         </div>
 
         {/* Mobile Menu */}
         <div className="flex items-center gap-3 md:hidden">
-          <LanguageSwitch />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button 
@@ -118,48 +111,48 @@ export default function Header() {
 
                 {/* Navigation Links */}
                 <nav className="flex-1 space-y-1 p-6">
-                  <a 
+                  <Link 
                     href="/#services" 
                     className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
                     onClick={handleNavClick}
                   >
                     {t.nav.services}
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/#pricing" 
                     className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
                     onClick={handleNavClick}
                   >
                     {t.nav.pricing}
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/#how-it-works" 
                     className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
                     onClick={handleNavClick}
                   >
                     How it works
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/#reviews" 
                     className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
                     onClick={handleNavClick}
                   >
                     {t.nav.reviews}
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/#service-area" 
                     className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
                     onClick={handleNavClick}
                   >
                     {t.nav.area}
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/#faq" 
                     className="flex h-11 items-center px-3 text-base font-medium text-muted-800 hover:bg-muted-100 hover:text-muted-900 rounded-lg transition-colors"
                     onClick={handleNavClick}
                   >
                     {t.nav.faq}
-                  </a>
+                  </Link>
                 </nav>
 
                 {/* CTA Section */}

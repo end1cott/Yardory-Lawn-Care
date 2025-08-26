@@ -6,29 +6,34 @@ import Footer from '@/components/shared/footer'
 import { I18nProvider } from '@/components/shared/i18n-provider'
 import { ToastProvider } from '@/components/ui/toast'
 import AnchorScrollHandler from '@/components/shared/anchor-scroll-handler'
-import RouteProgress from '@/components/route-progress'
+import RouteProgressWrapper from '@/components/route-progress-wrapper'
 import { NAME, PHONE_E164, ADDRESS_CITY } from '@/src/config/brand'
+import { SITE, getBaseUrl } from '@/src/lib/seo'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
-  title: `${NAME} - Lawn Care in Northeast Philly | Mow, Edge & Hedge`,
-  description: 'Reliable lawn mowing, edging & hedge trimming. Book in 45 seconds. Route-day discount available.',
+  title: SITE.defaultTitle,
+  description: SITE.defaultDesc,
   openGraph: {
-    title: `${NAME} - Lawn Care in Northeast Philly`,
-    description: 'Mow, Edge & Hedge — Book in 45s',
-    siteName: NAME,
-    images: ['/og-image.jpg'],
+    title: SITE.defaultTitle,
+    description: SITE.defaultDesc,
+    siteName: SITE.name,
+    images: [{ url: SITE.ogImage, width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
-    title: `${NAME} - Lawn Care in Northeast Philly`,
-    description: 'Mow, Edge & Hedge — Book in 45s',
+    title: SITE.defaultTitle,
+    description: SITE.defaultDesc,
+  },
+  icons: {
+    icon: '/yardory/apple-touch-icon.png',
+    apple: '/yardory/apple-touch-icon.png',
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const base = getBaseUrl()
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -42,8 +47,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       streetAddress: 'Northeast, Philadelphia',
     },
     areaServed: ADDRESS_CITY,
-    url: 'https://example.com',
-    sameAs: ['https://maps.google.com'],
+    priceRange: '$$',
+    ...(base ? { url: base } : {}),
   }
 
   return (
@@ -55,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <I18nProvider>
           <ToastProvider>
-            <RouteProgress />
+            <RouteProgressWrapper />
             <Header />
             <main>{children}</main>
             <Footer />

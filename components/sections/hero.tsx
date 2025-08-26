@@ -20,7 +20,10 @@ export default function Hero() {
           <p className="text-lg text-muted-600 leading-relaxed">{t.sub}</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a href="/quote">
-              <Button className="w-full sm:w-auto">
+              <Button 
+                className="w-full sm:w-auto"
+                aria-label={lang === 'ru' ? 'Получить мгновенный расчёт' : 'Get instant quote'}
+              >
                 {t.ctaQuote}
               </Button>
             </a>
@@ -37,7 +40,7 @@ export default function Hero() {
             alt="Professional lawn care service"
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 720px"
             priority
             onError={(e) => {
               // Fallback to gradient background if image doesn't exist
