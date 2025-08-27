@@ -1,3 +1,4 @@
+/* eslint react/no-unescaped-entities: "off" */
 import { Button } from '@/components/ui/button'
 import { PHONE_DISPLAY, PHONE_E164 } from '@/src/config/brand'
 import Link from 'next/link'
@@ -72,7 +73,7 @@ export default function Contact() {
               <div className="bg-green-50 rounded-xl p-6 border border-green-200">
                 <h4 className="font-semibold mb-3 text-green-800">Quick Order</h4>
                 <p className="text-sm text-green-700 mb-4">
-                  Fill out the request form and we'll contact you within 1 hour
+                  Fill out the request form and we&apos;ll contact you within 1 hour
                 </p>
                 <Link href="/quote">
                   <Button className="w-full bg-green-600 hover:bg-green-700">

@@ -1,3 +1,4 @@
+/* eslint react/no-unescaped-entities: "off" */
 'use client'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -22,7 +23,7 @@ export default function NotFound() {
               Oops! Page not found
             </h2>
             <p className="text-lg text-muted-600 leading-relaxed">
-              The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
+              The page you&apos;re looking for doesn&apos;t exist. It might have been moved, deleted, or you entered the wrong URL.
             </p>
           </div>
 

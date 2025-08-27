@@ -74,7 +74,7 @@ async function sendToTelegram(data: LeadData) {
 
           const photoResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
             method: 'POST',
-            body: formData,
+            body: formData as any,
           })
 
           if (!photoResponse.ok) {

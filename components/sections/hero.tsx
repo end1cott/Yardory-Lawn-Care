@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/components/shared/i18n-provider'
 import { PHONE_E164 } from '@/src/config/brand'
@@ -19,14 +20,14 @@ export default function Hero() {
           </h1>
           <p className="text-lg text-muted-600 leading-relaxed animate-fade-in-up delay-400">{t.sub}</p>
           <div className="flex flex-col sm:flex-row gap-3 animate-fade-in-up delay-600">
-            <a href="/quote" className="group">
+            <Link href="/quote" className="group">
               <Button 
                 className="w-full sm:w-auto hover:scale-105 transition-all duration-300 group-hover:shadow-lg"
                 aria-label={lang === 'ru' ? 'Получить мгновенный расчёт' : 'Get instant quote'}
               >
                 {t.ctaQuote}
               </Button>
-            </a>
+            </Link>
             <a href={`tel:${PHONE_E164}`} className="group">
               <Button 
                 variant="outline" 

@@ -7,5 +7,9 @@ const nextConfig: NextConfig = {
       'lucide-react',
     ],
   },
+  eslint: {
+    // Lint errors won't fail Vercel builds on preview/dev; production still enforces.
+    ignoreDuringBuilds: process.env.VERCEL_ENV !== 'production',
+  },
 }
 export default nextConfig

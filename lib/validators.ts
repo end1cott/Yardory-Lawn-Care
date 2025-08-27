@@ -13,6 +13,7 @@ export const LeadSchema = z.object({
   contactPreference: z.enum(['phone', 'email']),
   phonePreference: z.enum(['call', 'sms']).optional(),
   notes: z.string().optional(),
+  photos: z.array(z.string()).optional(),
 })
 
 export type LeadInput = z.infer<typeof LeadSchema>

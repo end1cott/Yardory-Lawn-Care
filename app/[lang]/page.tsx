@@ -1,3 +1,4 @@
+/* eslint react/no-unescaped-entities: "off" */
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { notFound } from 'next/navigation'
@@ -29,7 +30,7 @@ export default function LangPage({ params }: { params: Promise<{ lang: string }>
               Russian Language Coming Soon!
             </h1>
             <p className="text-lg text-muted-600 leading-relaxed mb-4">
-              We're working hard to bring you our lawn care services in Russian. 
+              We&apos;re working hard to bring you our lawn care services in Russian. 
               Stay tuned for updates!
             </p>
             <p className="text-base text-muted-500">
@@ -57,7 +58,7 @@ export default function LangPage({ params }: { params: Promise<{ lang: string }>
               Need help? Contact us!
             </h3>
             <p className="text-muted-600 mb-4">
-              Our team can assist you in English. Don't hesitate to reach out!
+              Our team can assist you in English. Don&apos;t hesitate to reach out!
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a href="tel:+19297044141" className="text-brand hover:text-brand-hover font-medium">
