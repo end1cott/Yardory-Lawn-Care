@@ -2,7 +2,7 @@
 'use client'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { NAME, PHONE_E164 } from '@/src/config/brand'
+import { PHONE_E164 } from '@/src/config/brand'
 
 export default function NotFound() {
   return (

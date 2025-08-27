@@ -5,6 +5,28 @@ import FormData from 'form-data'
 const TELEGRAM_BOT_TOKEN = '7440074610:AAHKSB8gYTgOjVunA-xagLQeObGeLVeHQOo'
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '6742290226' // Using your provided chat ID
 
+export type LeadPayload = {
+  name: string
+  phone: string
+  email: string
+  address: string
+  city: string
+  zip: string
+  lot: '0.1' | '0.25' | '0.5'
+  freq: 'weekly' | 'bi-weekly' | 'one-time'
+  services: ('mow' | 'edge' | 'hedge' | 'bagging')[]
+  contactPreference: 'phone' | 'email'
+  phonePreference?: 'call' | 'sms'
+  notes?: string
+  photos?: string[] // Base64 encoded images
+}
+
+function isLeadPayload(x: unknown): x is LeadPayload {
+  if (typeof x !== 'object' || x === null) return false
+  const o = x as Record<string, unknown>
+  return typeof o.name === 'string' && o.name.trim().length > 0
+}
+
 interface LeadData {
   name: string
   phone: string
@@ -17,11 +39,19 @@ interface LeadData {
   services: ('mow' | 'edge' | 'hedge' | 'bagging')[]
   contactPreference: 'phone' | 'email'
   phonePreference?: 'call' | 'sms'
-  notes: string
+  notes?: string
   photos?: string[] // Base64 encoded images
 }
 
-async function sendToTelegram(data: LeadData) {
+type TelegramApiResponse = {
+  ok: boolean
+  result?: Record<string, unknown>
+  description?: string
+}
+
+type TelegramResult = TelegramApiResponse | { ok: boolean; skipped: boolean } | { ok: boolean; error: string }
+
+async function sendToTelegram(data: LeadData): Promise<TelegramResult> {
   // Check if chat ID is configured
   if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === 'YOUR_CHAT_ID') {
     console.log('Telegram chat ID not configured. Skipping Telegram notification.')
@@ -46,12 +76,12 @@ async function sendToTelegram(data: LeadData) {
     })
 
     if (!messageResponse.ok) {
-      const errorData = await messageResponse.json().catch(() => ({}))
+      const errorData: TelegramApiResponse = await messageResponse.json().catch(() => ({ ok: false }))
       console.error('Telegram API error:', messageResponse.status, errorData)
       throw new Error(`Telegram API error: ${messageResponse.status} - ${errorData.description || 'Unknown error'}`)
     }
 
-    const messageResult = await messageResponse.json()
+    const messageResult: TelegramApiResponse = await messageResponse.json()
     console.log('Telegram message sent successfully:', messageResult)
 
     // Send photos if any
@@ -74,7 +104,7 @@ async function sendToTelegram(data: LeadData) {
 
           const photoResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
             method: 'POST',
-            body: formData as any,
+            body: formData as unknown as BodyInit,
           })
 
           if (!photoResponse.ok) {
@@ -97,19 +127,19 @@ async function sendToTelegram(data: LeadData) {
 }
 
 function formatTelegramMessage(data: LeadData): string {
-  const lotSizes = {
+  const lotSizes: Record<string, string> = {
     '0.1': 'Small (≤ 0.1 acre)',
     '0.25': 'Medium (≤ 0.25 acre)', 
     '0.5': 'Large (≤ 0.5 acre)'
   }
 
-  const frequencies = {
+  const frequencies: Record<string, string> = {
     'weekly': 'Weekly',
     'bi-weekly': 'Bi-weekly',
     'one-time': 'One-time'
   }
 
-  const serviceNames = {
+  const serviceNames: Record<string, string> = {
     'mow': 'Mowing',
     'edge': 'Edging', 
     'hedge': 'Hedge Trimming',
@@ -159,18 +189,29 @@ ${data.notes || 'No additional notes provided'}
 }
 
 export async function POST(req: NextRequest) {
+  let bodyUnknown: unknown
   try {
-    const body = await req.json()
-    console.log('LEAD:', body)
+    bodyUnknown = await req.json()
+  } catch {
+    return NextResponse.json({ ok: false, error: 'Invalid JSON' }, { status: 400 })
+  }
+
+  if (!isLeadPayload(bodyUnknown)) {
+    return NextResponse.json({ ok: false, error: 'Invalid payload' }, { status: 400 })
+  }
+  const payload = bodyUnknown // typed as LeadPayload
+
+  try {
+    console.log('LEAD:', payload)
 
     // Send to Telegram (this won't fail the request if Telegram is not configured)
-    const telegramResult = await sendToTelegram(body)
+    const telegramResult = await sendToTelegram(payload)
 
     // Always return success for the form submission
     return NextResponse.json({ 
       ok: true, 
       message: 'Quote request submitted successfully!',
-      telegram: telegramResult.skipped ? 'not_configured' : telegramResult.ok ? 'sent' : 'failed'
+      telegram: 'skipped' in telegramResult && telegramResult.skipped ? 'not_configured' : telegramResult.ok ? 'sent' : 'failed'
     })
   } catch (e) {
     console.error('Error processing lead:', e)
