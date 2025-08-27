@@ -53,6 +53,8 @@ export default function Header() {
             { href: "/#services", label: t.nav.services, delay: "delay-100" },
             { href: "/#pricing", label: t.nav.pricing, delay: "delay-200" },
             { href: "/#how-it-works", label: "How it works", delay: "delay-300" },
+            { href: "/#about", label: "About", delay: "delay-350" },
+            { href: "/#contact", label: "Contact", delay: "delay-375" },
             { href: "/#reviews", label: t.nav.reviews, delay: "delay-400" },
             { href: "/#service-area", label: t.nav.area, delay: "delay-500" },
             { href: "/#faq", label: t.nav.faq, delay: "delay-600" }
@@ -129,6 +131,8 @@ export default function Header() {
                     { href: "/#services", label: t.nav.services },
                     { href: "/#pricing", label: t.nav.pricing },
                     { href: "/#how-it-works", label: "How it works" },
+                    { href: "/#about", label: "About" },
+                    { href: "/#contact", label: "Contact" },
                     { href: "/#reviews", label: t.nav.reviews },
                     { href: "/#service-area", label: t.nav.area },
                     { href: "/#faq", label: t.nav.faq }

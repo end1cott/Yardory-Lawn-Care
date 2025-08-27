@@ -3,6 +3,8 @@ import Hero from '@/components/sections/hero'
 import Services from '@/components/sections/services'
 import Plans from '@/components/sections/plans'
 import HowItWorks from '@/components/sections/how-it-works'
+import About from '@/components/sections/about'
+import Contact from '@/components/sections/contact'
 import GalleryBeforeAfter from '@/components/sections/gallery-before-after'
 import Reviews from '@/components/sections/reviews'
 import AreaWrapper from '@/components/sections/area-wrapper'
@@ -45,6 +47,7 @@ export default function Page() {
       <Services />
       <Plans />
       <HowItWorks />
+      <About />
       <GalleryBeforeAfter
         items={[
           { before: '/gallery/before1.webp', after: '/gallery/after1.webp', caption: 'Mow + Edge' },
@@ -54,6 +57,7 @@ export default function Page() {
       <Reviews />
       <AreaWrapper showFullListLink={true} />
       <FAQ />
+      <Contact />
     </>
   )
 }
