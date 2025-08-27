@@ -19,7 +19,11 @@ export async function generateMetadata(): Promise<Metadata> {
   })
 }
 
-export default function QuotePage() {
+export default function QuotePage({
+  searchParams,
+}: {
+  searchParams: { freq?: string }
+}) {
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -45,7 +49,7 @@ export default function QuotePage() {
       <div className="section">
         <div className="container max-w-3xl">
           <h1 className="text-3xl font-semibold mb-4">Get your quote</h1>
-          <QuoteForm />
+          <QuoteForm initialFreq={searchParams.freq} />
         </div>
       </div>
     </>

@@ -10,6 +10,8 @@ export const LeadSchema = z.object({
   lot: z.enum(['0.1','0.25','0.5']),
   freq: z.enum(['weekly','bi-weekly','one-time']),
   services: z.array(z.enum(['mow','edge','hedge','bagging'])).min(1, 'Please select at least one service'),
+  contactPreference: z.enum(['phone', 'email']),
+  phonePreference: z.enum(['call', 'sms']).optional(),
   notes: z.string().optional(),
 })
 

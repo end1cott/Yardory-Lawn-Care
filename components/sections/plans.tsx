@@ -4,9 +4,9 @@ import { Button } from '@/components/ui/button'
 
 export default function Plans() {
   const plans = [
-    { name: 'One‑time', desc: 'Perfect for overgrown or listing prep.', tag: null },
-    { name: 'Bi‑weekly', desc: 'Balanced schedule for most lawns.', tag: 'Popular' },
-    { name: 'Weekly', desc: 'Best look with route-day discount.', tag: 'Save $5' },
+    { name: 'One‑time', desc: 'Perfect for overgrown or listing prep.', tag: null, freq: 'one-time' },
+    { name: 'Bi‑weekly', desc: 'Balanced schedule for most lawns.', tag: 'Popular', freq: 'bi-weekly' },
+    { name: 'Weekly', desc: 'Best look with route-day discount.', tag: 'Save $5', freq: 'weekly' },
   ]
   return (
     <section id="pricing" className="section scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
@@ -32,7 +32,7 @@ export default function Plans() {
               <CardContent className="flex flex-col flex-1">
                 <p className="opacity-90">{p.desc}</p>
                 <div className="mt-auto pt-8 md:pt-6">
-                  <a href="/quote">
+                  <a href={`/quote?freq=${p.freq}`}>
                     <Button className="w-full h-11 hover:scale-105 transition-transform duration-200">
                       Get Instant Quote
                     </Button>
