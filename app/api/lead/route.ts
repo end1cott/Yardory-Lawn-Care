@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { calcPriceRange } from '@/lib/validators'
+import FormData from 'form-data'
 
 const TELEGRAM_BOT_TOKEN = '7440074610:AAHKSB8gYTgOjVunA-xagLQeObGeLVeHQOo'
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '6742290226' // Using your provided chat ID
@@ -17,6 +18,7 @@ interface LeadData {
   contactPreference: 'phone' | 'email'
   phonePreference?: 'call' | 'sms'
   notes: string
+  photos?: string[] // Base64 encoded images
 }
 
 async function sendToTelegram(data: LeadData) {
@@ -29,7 +31,8 @@ async function sendToTelegram(data: LeadData) {
   const message = formatTelegramMessage(data)
   
   try {
-    const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    // Send the main message first
+    const messageResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,15 +45,50 @@ async function sendToTelegram(data: LeadData) {
       }),
     })
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}))
-      console.error('Telegram API error:', response.status, errorData)
-      throw new Error(`Telegram API error: ${response.status} - ${errorData.description || 'Unknown error'}`)
+    if (!messageResponse.ok) {
+      const errorData = await messageResponse.json().catch(() => ({}))
+      console.error('Telegram API error:', messageResponse.status, errorData)
+      throw new Error(`Telegram API error: ${messageResponse.status} - ${errorData.description || 'Unknown error'}`)
     }
 
-    const result = await response.json()
-    console.log('Telegram message sent successfully:', result)
-    return result
+    const messageResult = await messageResponse.json()
+    console.log('Telegram message sent successfully:', messageResult)
+
+    // Send photos if any
+    if (data.photos && data.photos.length > 0) {
+      for (let i = 0; i < data.photos.length; i++) {
+        const photo = data.photos[i]
+        try {
+          // Convert base64 to buffer
+          const base64Data = photo.replace(/^data:image\/[a-z]+;base64,/, '')
+          const buffer = Buffer.from(base64Data, 'base64')
+          
+          // Create form data for photo upload
+          const formData = new FormData()
+          formData.append('chat_id', TELEGRAM_CHAT_ID)
+          formData.append('caption', `📸 Lawn Photo ${i + 1} from ${data.name}`)
+          formData.append('photo', buffer, {
+            filename: `lawn_photo_${i + 1}.jpg`,
+            contentType: 'image/jpeg'
+          })
+
+          const photoResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
+            method: 'POST',
+            body: formData,
+          })
+
+          if (!photoResponse.ok) {
+            console.error(`Failed to send photo ${i + 1}:`, photoResponse.status)
+          } else {
+            console.log(`Photo ${i + 1} sent successfully`)
+          }
+        } catch (photoError) {
+          console.error(`Error sending photo ${i + 1}:`, photoError)
+        }
+      }
+    }
+
+    return messageResult
   } catch (error) {
     console.error('Error sending to Telegram:', error)
     // Don't throw error, just log it so the form submission still succeeds
@@ -112,6 +150,8 @@ ${data.contactPreference === 'phone' && data.phonePreference ? `• Phone Prefer
 
 📝 <b>Additional Notes:</b>
 ${data.notes || 'No additional notes provided'}
+
+📸 <b>Photos:</b> ${data.photos && data.photos.length > 0 ? `${data.photos.length} photo(s) attached` : 'No photos provided'}
 
 ⏰ <b>Submitted:</b> ${new Date().toLocaleString()}
 🌐 <b>Source:</b> Website Quote Form

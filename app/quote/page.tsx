@@ -50,6 +50,7 @@ export default async function QuotePage({
       <div className="section">
         <div className="container max-w-3xl">
           <h1 className="text-3xl font-semibold mb-4">Get your quote</h1>
+          <p className="text-gray-600 mb-6">Response in 5–10 minutes. No spam. Get an accurate estimate for your lawn care needs.</p>
           <QuoteForm initialFreq={params.freq} />
         </div>
       </div>

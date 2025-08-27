@@ -57,7 +57,8 @@ export default function Header() {
             { href: "/#contact", label: "Contact", delay: "delay-375" },
             { href: "/#reviews", label: t.nav.reviews, delay: "delay-400" },
             { href: "/#service-area", label: t.nav.area, delay: "delay-500" },
-            { href: "/#faq", label: t.nav.faq, delay: "delay-600" }
+            { href: "/#faq", label: t.nav.faq, delay: "delay-600" },
+            { href: "/blog", label: t.nav.blog, delay: "delay-700" }
           ].map((link) => (
             <Link 
               key={link.href}
@@ -135,7 +136,8 @@ export default function Header() {
                     { href: "/#contact", label: "Contact" },
                     { href: "/#reviews", label: t.nav.reviews },
                     { href: "/#service-area", label: t.nav.area },
-                    { href: "/#faq", label: t.nav.faq }
+                    { href: "/#faq", label: t.nav.faq },
+                    { href: "/blog", label: t.nav.blog }
                   ].map((link, index) => (
                     <Link 
                       key={link.href}

@@ -9,6 +9,7 @@ import GalleryBeforeAfter from '@/components/sections/gallery-before-after'
 import Reviews from '@/components/sections/reviews'
 import AreaWrapper from '@/components/sections/area-wrapper'
 import FAQ from '@/components/sections/faq'
+import Blog from '@/components/sections/blog'
 import { buildMetadata } from '@/src/lib/seo'
 import { getLocaleFromPath } from '@/src/lib/i18n'
 import en from '@/src/i18n/seo/en'
@@ -57,6 +58,7 @@ export default function Page() {
       <Reviews />
       <AreaWrapper showFullListLink={true} />
       <FAQ />
+      <Blog />
       <Contact />
     </>
   )

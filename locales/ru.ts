@@ -3,7 +3,7 @@ const ru = {
   sub: 'Скидка за день маршрута: −$5, если ваш район обслуживаем в маршрутный день.',
   ctaQuote: 'Получить расчёт',
   ctaCall: 'Позвонить',
-  nav: { services: 'Услуги', pricing: 'Цены', reviews: 'Отзывы', area: 'Зона', faq: 'FAQ' },
+  nav: { services: 'Услуги', pricing: 'Цены', reviews: 'Отзывы', area: 'Зона', faq: 'FAQ', blog: 'Блог' },
   sections: {
     services: 'Услуги',
     plans: 'Пакеты и частота',

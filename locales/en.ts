@@ -3,7 +3,7 @@ const en = {
   sub: 'Route-day discount: save $5 if we service your area on our route day.',
   ctaQuote: 'Get Instant Quote',
   ctaCall: 'Call Now',
-  nav: { services: 'Services', pricing: 'Pricing', reviews: 'Reviews', area: 'Area', faq: 'FAQ' },
+  nav: { services: 'Services', pricing: 'Pricing', reviews: 'Reviews', area: 'Area', faq: 'FAQ', blog: 'Blog' },
   sections: {
     services: 'Services',
     plans: 'Plans & Frequency',
