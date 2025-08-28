@@ -1,17 +1,18 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getArticleBySlug } from '@/lib/posts'
-import { JsonLd } from '@/components/JsonLd'
+import JsonLd from '@/src/components/JsonLd'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { Callout } from '@/components/Callout'
 import { Toc } from '@/components/Toc'
 
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = await getArticleBySlug(params.slug)
+  const { slug } = await params
+  const post = await getArticleBySlug(slug)
   
   if (!post) {
     return {
@@ -48,7 +49,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function BlogPost({ params }: PageProps) {
-  const post = await getArticleBySlug(params.slug)
+  const { slug } = await params
+  const post = await getArticleBySlug(slug)
   
   if (!post) {
     notFound()
@@ -103,7 +105,7 @@ export default async function BlogPost({ params }: PageProps) {
 
       {/* JSON-LD для SEO */}
       <JsonLd
-        data={{
+        json={{
           '@context': 'https://schema.org',
           '@type': 'Article',
           headline: post.frontmatter.title,
