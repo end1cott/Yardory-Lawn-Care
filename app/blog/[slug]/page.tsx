@@ -2,6 +2,8 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import gfm from 'remark-gfm'
 import { getPostBySlug, getPostSlugs } from '@/lib/posts'
 import { CTA } from '@/components/CTA'
+import { Callout } from '@/components/Callout'
+import { Toc } from '@/components/Toc'
 import { getBaseUrl } from '@/lib/site'
 
 export async function generateStaticParams() {
@@ -82,7 +84,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </p>
       </header>
 
-      <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [gfm] } }} components={{ CTA }} />
+      <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [gfm] } }} components={{ CTA, Callout, Toc }} />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }} />
       {jsonLdFAQ && (
