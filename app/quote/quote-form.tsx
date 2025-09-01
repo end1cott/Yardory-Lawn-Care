@@ -6,7 +6,6 @@ import { Select } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/toast'
 import { LeadSchema, type LeadInput, calcPriceRange } from '@/lib/validators'
-import PhotoUpload from '@/components/PhotoUpload'
 
 export default function QuoteForm({ initialFreq }: { initialFreq?: string }) {
   // Validate and set initial frequency
@@ -19,7 +18,7 @@ export default function QuoteForm({ initialFreq }: { initialFreq?: string }) {
 
   const [data, setData] = useState<LeadInput>({
     name: '', phone: '', email: '', address: '', city: 'Philadelphia', zip: '',
-    lot: '0.1', freq: getInitialFreq(), services: ['mow'], contactPreference: 'phone', phonePreference: 'call', notes: '', photos: []
+    lot: '0.1', freq: getInitialFreq(), services: ['mow'], contactPreference: 'phone', phonePreference: 'call', notes: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { push } = useToast()
@@ -76,7 +75,7 @@ export default function QuoteForm({ initialFreq }: { initialFreq?: string }) {
         // Reset form after successful submission
         setData({
           name: '', phone: '', email: '', address: '', city: 'Philadelphia', zip: '',
-          lot: '0.1', freq: getInitialFreq(), services: ['mow'], contactPreference: 'phone', phonePreference: 'call', notes: '', photos: []
+          lot: '0.1', freq: getInitialFreq(), services: ['mow'], contactPreference: 'phone', phonePreference: 'call', notes: ''
         })
       } else {
         push({ 
@@ -205,14 +204,7 @@ export default function QuoteForm({ initialFreq }: { initialFreq?: string }) {
           <Textarea placeholder="Notes (gate code, dogs, slopes)" value={data.notes} onChange={e=>handleChange('notes', e.target.value)} className="transition-all duration-300 focus:scale-105" />
         </div>
 
-        {/* Photo Upload */}
-        <div className="animate-fade-in-up delay-350">
-          <PhotoUpload 
-            photos={data.photos || []} 
-            onPhotosChange={(photos) => handleChange('photos', photos)}
-            maxPhotos={5}
-          />
-        </div>
+
 
         <div className="flex justify-end animate-fade-in-up delay-400">
           <Button 
