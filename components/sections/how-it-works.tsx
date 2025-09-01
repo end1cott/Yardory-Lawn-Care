@@ -2,7 +2,7 @@ export default function HowItWorks() {
   const steps = [
     { n: 1, t: 'Address', d: 'Tell us your address & lawn size.' },
     { n: 2, t: 'Quote', d: 'Pick frequency & extras, see a price range.' },
-    { n: 3, t: 'Service', d: 'We arrive on your route-day. Pay online or cash.' },
+    { n: 3, t: 'Service', d: 'We arrive on your route-day. Pay with cash or mobile pay. Card payment coming soon!' },
   ]
   return (
     <section id="how-it-works" className="section bg-white scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>

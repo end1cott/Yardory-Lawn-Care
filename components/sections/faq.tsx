@@ -6,7 +6,7 @@ const QA = [
   { q: 'Grass height fee?', a: 'Overgrown lawns may include a one-time surcharge due to extra time.' },
   { q: 'Bagging clippings?', a: 'Available as an add-on. Otherwise we mulch/disperse.' },
   { q: 'Water/Electricity?', a: 'Not required for mowing/edging. Please ensure access if needed for other tasks.' },
-  { q: 'Payment options?', a: 'Cash, card, or mobile pay. Invoices available upon request.' },
+  { q: 'Payment options?', a: 'Cash or mobile pay. Card payment coming soon! Invoices available upon request.' },
 ]
 
 export default function FAQ() {

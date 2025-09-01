@@ -59,7 +59,7 @@ export default function Privacy() {
               <ul className="list-disc pl-6 space-y-1 text-muted-600">
                 <li><strong>Contact details</strong> (name, email, phone, address) when you submit forms or book service.</li>
                 <li><strong>Service details</strong> (property size/location, preferred dates, notes, photos you upload).</li>
-                <li><strong>Payment info</strong> processed by our payment partners; we do not store full card numbers.</li>
+                <li><strong>Payment info</strong> processed by our payment partners; card payment coming soon!</li>
                 <li><strong>Usage data</strong> (IP, device, pages viewed) collected via cookies and similar tech.</li>
                 <li><strong>Communications</strong> (calls, emails, SMS) for scheduling and support.</li>
               </ul>
@@ -70,7 +70,7 @@ export default function Privacy() {
               <ul className="list-disc pl-6 space-y-1 text-muted-600">
                 <li>Provide, schedule, and improve lawn care services.</li>
                 <li>Send quotes, invoices, updates, and customer support messages.</li>
-                <li>Process payments and prevent fraud.</li>
+                <li>Process payments and prevent fraud. (Card payment coming soon!)</li>
                 <li>Analyze site performance and marketing effectiveness.</li>
                 <li>Comply with legal, tax, and safety obligations.</li>
               </ul>
