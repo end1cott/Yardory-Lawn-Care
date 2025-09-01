@@ -14,9 +14,7 @@ faq:
 ---
 
 import { Callout } from "@/components/Callout"
-import { Toc } from "@/components/Toc"
-
-<Toc />
+import { ImageModal } from "@/components/ImageModal"
 
 # Philadelphia Lawn Care Calendar (USDA Zone 7a)
 
@@ -35,6 +33,31 @@ This guide is tailored for **Philadelphia and nearby suburbs (Zone 7a)** and foc
 - **Broadleaf herbicides:** best at **50–85 °F (10–29 °C)**.  
 - **Summer irrigation target:** about **1″/week** total (25 mm), mornings preferred.  
 - **Mowing height (fescue/KBG):** spring **3.0–3.25″**, summer **3.5–4.0″**, fall **3.0–3.5″**.
+
+---
+
+## 📅 Download Your Calendar
+
+**Get the complete Philadelphia Zone 7a Lawn Care Calendar:**
+
+<ImageModal src="/assets/calendars/philly_zone7a_calendar.webp" alt="Philadelphia Zone 7a Lawn Care Calendar">
+  <div className="relative group">
+    <img 
+      src="/assets/calendars/philly_zone7a_calendar.webp" 
+      alt="Philadelphia Zone 7a Lawn Care Calendar"
+      className="w-full rounded-lg shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer group-hover:scale-[1.02]"
+    />
+    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200 rounded-lg flex items-center justify-center">
+      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 text-gray-800 px-3 py-2 rounded-full text-sm font-medium shadow-lg">
+        🔍 Click to zoom
+      </div>
+    </div>
+  </div>
+</ImageModal>
+
+*Click the image above to view full size, or use the download link below:*
+- [Download Calendar (WebP)](/assets/calendars/philly_zone7a_calendar.webp) - High quality, optimized for web
+- Print-friendly version coming soon
 
 ---
 
@@ -180,8 +203,7 @@ Pull samples in late fall/winter. Lime **only from test results** (pH and buffer
 
 ## Download the calendar
 
-- [Download the updated calendar (WebP)](/assets/calendars/philly_zone7a_calendar.webp)  
-- (Optional) Provide a printable PDF version.
+*The calendar is now available at the top of this article for easy access.*
 
 <Callout type="note">
 Zone 7a timing can slide by 1–2 weeks with microclimates and yearly weather. When in doubt, follow <em>soil temperature</em> over wall-calendar dates.
@@ -206,6 +228,4 @@ Keep it at **3.5–4.0″**, especially on hot, sunny or shaded lawns.
 
 ---
 
-## Need professional help?
 
-We can handle overseeding/aeration, set up irrigation schedules, and build a fertilizer plan matched to your soil test. **Free estimate — no pressure.**
