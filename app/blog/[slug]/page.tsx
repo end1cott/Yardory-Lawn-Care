@@ -17,17 +17,44 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { frontmatter } = await getPostBySlug(slug)
   const base = getBaseUrl()
   const url = `${base}/blog/${slug}`
+  
   return {
     title: frontmatter.title,
     description: frontmatter.description,
+    keywords: frontmatter.keywords || 'lawn care philadelphia, lawn care tips, philadelphia lawn service, professional lawn care',
+    authors: [{ name: 'MowJet Lawn Care' }],
+    category: 'Lawn Care',
     alternates: { canonical: frontmatter.canonical ?? url },
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.description,
       url,
       type: 'article',
-      images: frontmatter.cover ? [{ url: frontmatter.cover }] : undefined,
+      siteName: 'MowJet Lawn Care',
+      images: frontmatter.cover ? [{ 
+        url: frontmatter.cover,
+        width: 1200,
+        height: 630,
+        alt: frontmatter.title
+      }] : undefined,
+      locale: 'en_US',
+      publishedTime: frontmatter.date,
+      modifiedTime: frontmatter.updated || frontmatter.date,
+      section: 'Lawn Care',
+      tags: frontmatter.tags || ['lawn care', 'philadelphia', 'professional service'],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontmatter.title,
+      description: frontmatter.description,
+      images: frontmatter.cover ? [frontmatter.cover] : undefined,
+    },
+    other: {
+      'article:published_time': frontmatter.date,
+      'article:modified_time': frontmatter.updated || frontmatter.date,
+      'article:section': 'Lawn Care',
+      'article:tag': (frontmatter.tags || ['lawn care', 'philadelphia']).join(', '),
+    }
   }
 }
 
