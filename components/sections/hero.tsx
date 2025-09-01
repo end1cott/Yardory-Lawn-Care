@@ -12,7 +12,7 @@ export default function Hero() {
   const t = lang === 'ru' ? ru : en
 
   return (
-    <section className="section bg-gradient-to-br from-muted-50 to-white">
+    <section className="section bg-gradient-to-br from-brand/5 via-white to-muted-50/30">
       <div className="container grid items-center gap-10 md:grid-cols-2">
         <div className="space-y-6 animate-fade-in-up">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-r from-muted-800 to-muted-600 bg-clip-text text-transparent animate-fade-in-up delay-200">

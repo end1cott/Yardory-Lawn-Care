@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function Contact() {
   return (
-    <section id="contact" className="section scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
+    <section id="contact" className="section bg-gradient-to-br from-muted-50/30 via-white to-brand/5 scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
       <div className="container">
         <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="text-3xl font-semibold mb-4">Contact Us</h2>

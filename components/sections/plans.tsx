@@ -9,7 +9,7 @@ export default function Plans() {
     { name: 'Weekly', desc: 'Best look with route-day discount.', tag: 'Save $5', freq: 'weekly' },
   ]
   return (
-    <section id="pricing" className="section scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
+    <section id="pricing" className="section bg-muted-50/50 scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
       <div className="container">
         <h2 className="text-2xl font-semibold mb-6 animate-fade-in-up">Plans & Frequency</h2>
         <div className="grid gap-6 md:grid-cols-3">

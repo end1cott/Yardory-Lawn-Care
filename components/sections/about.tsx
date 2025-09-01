@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="about" className="section scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
+    <section id="about" className="section bg-muted-50/40 scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
       <div className="container">
         <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="text-3xl font-semibold mb-4">About Us</h2>
@@ -80,7 +80,7 @@ export default function About() {
                          <div className="pt-4">
                <div className="grid grid-cols-3 gap-6 text-center">
                  <div>
-                   <div className="text-2xl font-bold text-green-600 mb-1">50+</div>
+                   <div className="text-2xl font-bold text-green-600 mb-1">450+</div>
                    <div className="text-sm text-muted-600">Happy Clients</div>
                  </div>
                  <div>

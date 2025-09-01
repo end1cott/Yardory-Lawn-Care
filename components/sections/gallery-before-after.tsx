@@ -5,7 +5,7 @@ import Image from 'next/image'
 type Item = { before: string; after: string; caption?: string }
 export default function GalleryBeforeAfter({ items }: { items: Item[] }) {
   return (
-    <section id="gallery" className="section scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
+    <section id="gallery" className="section bg-white scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
       <div className="container">
         <h2 className="text-2xl font-semibold mb-6">Before / After</h2>
         <div className="grid gap-6 md:grid-cols-2">

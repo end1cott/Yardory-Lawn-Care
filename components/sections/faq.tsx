@@ -11,7 +11,7 @@ const QA = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="section bg-muted-50 scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
+    <section id="faq" className="section bg-white scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
       <div className="container">
         <h2 className="text-2xl font-semibold mb-6 animate-fade-in-up">FAQ</h2>
         <Accordion type="single" collapsible className="rounded-xl border bg-white shadow-soft animate-fade-in-up delay-200">

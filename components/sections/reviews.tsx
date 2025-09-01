@@ -20,7 +20,7 @@ const DATA = [
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="section bg-muted-50 scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
+    <section id="reviews" className="section bg-muted-50/60 scroll-mt-24 md:scroll-mt-28 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand" tabIndex={-1} data-section-anchor>
       <div className="container">
         <h2 className="text-2xl font-semibold mb-6 animate-fade-in-up">Reviews</h2>
         <div className="grid gap-6 md:grid-cols-2">
