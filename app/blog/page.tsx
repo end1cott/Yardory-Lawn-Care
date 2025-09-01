@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getAllPosts } from '@/lib/posts'
+import { getAllPosts } from '@/src/lib/posts'
 import Image from 'next/image'
 
 export const metadata = {

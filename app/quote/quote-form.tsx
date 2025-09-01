@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Select } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/toast'
-import { LeadSchema, type LeadInput } from '@/lib/validators'
+import { LeadSchema, type LeadInput } from '@/src/lib/validators'
 
 export default function QuoteForm({ initialFreq }: { initialFreq?: string }) {
   // Validate and set initial frequency

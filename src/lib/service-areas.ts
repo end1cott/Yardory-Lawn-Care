@@ -100,25 +100,32 @@ export const SERVICE_AREAS = [
       },
       {
         subtitle: "Lower Southampton Township",
-        items: ["Feasterville–Trevose"]
+        items: ["Feasterville","Trevose","Southampton","Holland"]
+      },
+      {
+        subtitle: "Upper Southampton Township",
+        items: ["Churchville","Richboro","Ivyland"]
+      },
+      {
+        subtitle: "Warminster Township",
+        items: ["Warminster","Hartsville","Warwick"]
+      },
+      {
+        subtitle: "Warrington Township",
+        items: ["Warrington","Doylestown"]
+      },
+      {
+        subtitle: "Newtown Township",
+        items: ["Newtown","Newtown Square"]
       },
       {
         subtitle: "Middletown Township",
-        items: ["Langhorne","Langhorne Borough","Penndel","Hulmeville"]
-      },
-      {
-        subtitle: "Bristol Township & Bristol Borough",
-        items: ["Croydon"]
-      }
-    ]
-  },
-  {
-    title: "South Jersey (via Tacony–Palmyra / Betsy Ross)",
-    groups: [
-      {
-        subtitle: "",
-        items: ["Palmyra","Riverton","Cinnaminson","Pennsauken","Merchantville"]
+        items: ["Langhorne","Langhorne Manor","Penndel"]
       }
     ]
   }
-] as const;
+] as const
+
+export type ServiceArea = typeof SERVICE_AREAS[number]
+export type ServiceGroup = ServiceArea['groups'][number]
+export type ServiceItem = ServiceGroup['items'][number]

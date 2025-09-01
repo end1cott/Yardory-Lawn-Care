@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { calcPriceRange } from '@/lib/validators'
+import { calcPriceRange } from '@/src/lib/validators'
 import FormData from 'form-data'
 
 const TELEGRAM_BOT_TOKEN = '7440074610:AAHKSB8gYTgOjVunA-xagLQeObGeLVeHQOo'

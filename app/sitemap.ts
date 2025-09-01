@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
-import { getAllPosts } from '@/lib/posts'
-import { getBaseUrl } from '@/lib/site'
+import { getAllPosts } from '@/src/lib/posts'
+import { getBaseUrl } from '@/src/lib/seo'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getBaseUrl()

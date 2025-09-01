@@ -1,11 +1,11 @@
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import gfm from 'remark-gfm'
-import { getPostBySlug, getPostSlugs } from '@/lib/posts'
+import { getPostBySlug, getPostSlugs } from '@/src/lib/posts'
 import { CTA } from '@/components/CTA'
 import { Callout } from '@/components/Callout'
 import { Toc } from '@/components/Toc'
 import { ImageModal } from '@/components/ImageModal'
-import { getBaseUrl } from '@/lib/site'
+import { getBaseUrl } from '@/src/lib/seo'
 
 export async function generateStaticParams() {
   const slugs = await getPostSlugs()

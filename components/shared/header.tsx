@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { useI18n } from './i18n-provider'
 import { NAME, PHONE_DISPLAY, PHONE_E164 } from '@/src/config/brand'
-import en from '@/locales/en'
-import ru from '@/locales/ru'
+import en from '@/src/i18n/locales/en'
+import ru from '@/src/i18n/locales/ru'
 
 export default function Header() {
   const { lang } = useI18n()

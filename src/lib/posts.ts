@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises'
-import path from 'node:path'
+import path from 'path'
 import matter from 'gray-matter'
 
 export type FAQ = { q: string; a: string }
@@ -63,4 +63,3 @@ export async function getAllArticles() {
   const articles = await Promise.all(slugs.map(getArticleBySlug))
   return articles.filter(Boolean).sort((a, b) => (a!.frontmatter.date > b!.frontmatter.date ? -1 : 1))
 }
-

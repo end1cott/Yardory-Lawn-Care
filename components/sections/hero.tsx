@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/components/shared/i18n-provider'
 import { PHONE_E164 } from '@/src/config/brand'
-import en from '@/locales/en'
-import ru from '@/locales/ru'
+import en from '@/src/i18n/locales/en'
+import ru from '@/src/i18n/locales/ru'
 
 export default function Hero() {
   const { lang } = useI18n()

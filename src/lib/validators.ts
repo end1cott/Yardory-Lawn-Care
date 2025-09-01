@@ -29,5 +29,3 @@ export function calcPriceRange(input: LeadInput) {
   const to = Math.round(price * 1.2)
   return { from, to }
 }
-
-

@@ -4,7 +4,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { ChevronDown, Search, X, ArrowRight } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { SERVICE_AREAS } from '@/data/service-areas'
+import { SERVICE_AREAS } from '@/src/lib/service-areas'
 
 interface AreaSectionProps {
   defaultOpen?: boolean
