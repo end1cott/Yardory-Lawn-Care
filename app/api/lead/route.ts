@@ -18,7 +18,6 @@ export type LeadPayload = {
   contactPreference: 'phone' | 'email'
   phonePreference?: 'call' | 'sms'
   notes?: string
-  photos?: string[] // Base64 encoded images
 }
 
 function isLeadPayload(x: unknown): x is LeadPayload {
@@ -40,7 +39,6 @@ interface LeadData {
   contactPreference: 'phone' | 'email'
   phonePreference?: 'call' | 'sms'
   notes?: string
-  photos?: string[] // Base64 encoded images
 }
 
 type TelegramApiResponse = {
@@ -83,40 +81,6 @@ async function sendToTelegram(data: LeadData): Promise<TelegramResult> {
 
     const messageResult: TelegramApiResponse = await messageResponse.json()
     console.log('Telegram message sent successfully:', messageResult)
-
-    // Send photos if any
-    if (data.photos && data.photos.length > 0) {
-      for (let i = 0; i < data.photos.length; i++) {
-        const photo = data.photos[i]
-        try {
-          // Convert base64 to buffer
-          const base64Data = photo.replace(/^data:image\/[a-z]+;base64,/, '')
-          const buffer = Buffer.from(base64Data, 'base64')
-          
-          // Create form data for photo upload
-          const formData = new FormData()
-          formData.append('chat_id', TELEGRAM_CHAT_ID)
-          formData.append('caption', `📸 Lawn Photo ${i + 1} from ${data.name}`)
-          formData.append('photo', buffer, {
-            filename: `lawn_photo_${i + 1}.jpg`,
-            contentType: 'image/jpeg'
-          })
-
-          const photoResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
-            method: 'POST',
-            body: formData as unknown as BodyInit,
-          })
-
-          if (!photoResponse.ok) {
-            console.error(`Failed to send photo ${i + 1}:`, photoResponse.status)
-          } else {
-            console.log(`Photo ${i + 1} sent successfully`)
-          }
-        } catch (photoError) {
-          console.error(`Error sending photo ${i + 1}:`, photoError)
-        }
-      }
-    }
 
     return messageResult
   } catch (error) {
@@ -180,8 +144,6 @@ ${data.contactPreference === 'phone' && data.phonePreference ? `• Phone Prefer
 
 📝 <b>Additional Notes:</b>
 ${data.notes || 'No additional notes provided'}
-
-📸 <b>Photos:</b> ${data.photos && data.photos.length > 0 ? `${data.photos.length} photo(s) attached` : 'No photos provided'}
 
 ⏰ <b>Submitted:</b> ${new Date().toLocaleString()}
 🌐 <b>Source:</b> Website Quote Form
