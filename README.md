@@ -121,7 +121,7 @@ Example lead data structure:
 {
   "name": "John Doe",
   "phone": "+1234567890",
-  "email": "john@example.com",
+      "email": "info@mowjet.com",
   "address": "123 Main St",
   "city": "Philadelphia",
   "zip": "19111",

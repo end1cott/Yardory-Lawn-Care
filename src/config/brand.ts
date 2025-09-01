@@ -2,8 +2,8 @@ export const BRAND_CONFIG = {
   NAME: "MowJet",
   PHONE_DISPLAY: "929 (704) - 4141",
   PHONE_E164: "+19297044141",
-  EMAIL_GENERAL: "hello@mowjet.com",
-  EMAIL_PRIVACY: "privacy@mowjet.com",
+  EMAIL_GENERAL: "info@mowjet.com",
+  EMAIL_PRIVACY: "info@mowjet.com",
   ADDRESS_CITY: "Philadelphia, PA",
 } as const
 

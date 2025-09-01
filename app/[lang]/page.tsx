@@ -64,9 +64,9 @@ export default function LangPage({ params }: { params: Promise<{ lang: string }>
               <a href="tel:+19297044141" className="text-brand hover:text-brand-hover font-medium">
                 📞 (929) 704-4141
               </a>
-              <a href="mailto:hello@mowjet.com" className="text-brand hover:text-brand-hover font-medium">
-                ✉️ hello@mowjet.com
-              </a>
+                      <a href="mailto:info@mowjet.com" className="text-brand hover:text-brand-hover font-medium">
+          ✉️ info@mowjet.com
+        </a>
             </div>
           </div>
         </div>

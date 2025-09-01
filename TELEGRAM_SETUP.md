@@ -39,7 +39,7 @@ When someone submits a quote form, you'll get a nicely formatted message like:
 👤 Contact Information:
 • Name: John Doe
 • Phone: (555) 123-4567
-• Email: john@example.com
+• Email: info@mowjet.com
 
 📍 Property Details:
 • Address: 123 Main St
