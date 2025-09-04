@@ -4,8 +4,6 @@ import { Button } from '@/components/ui/button'
 import { notFound } from 'next/navigation'
 import { use } from 'react'
 
-export const runtime = 'edge'
-
 export default function LangPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = use(params)
   

@@ -1,11 +1,8 @@
 name = "mowjet"
 compatibility_date = "2025-09-03"
 
-pages_build_output_dir = ".vercel/output/static"
+type = "javascript"   # указываем тип проекта
 
-[build]
-command = "npm run pages:build"
-output_directory = ".vercel/output/static"
-
-[build.environment]
-NODE_VERSION = "20"
+[site]
+bucket = ".vercel/output/static"   # выходной каталог Pages
+entry-point = "."                  # корень проекта

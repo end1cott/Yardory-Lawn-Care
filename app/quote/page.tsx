@@ -6,8 +6,6 @@ import ru from '@/src/i18n/seo/ru'
 import JsonLd from '@/src/components/JsonLd'
 import QuoteForm from './quote-form'
 
-export const runtime = 'edge'
-
 export async function generateMetadata(): Promise<Metadata> {
   const pathname = '/quote'
   const locale = getLocaleFromPath(pathname)
