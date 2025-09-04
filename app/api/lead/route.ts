@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { calcPriceRange } from '@/src/lib/validators'
 import FormData from 'form-data'
 
+export const runtime = 'edge'
+
 const TELEGRAM_BOT_TOKEN = '7440074610:AAHKSB8gYTgOjVunA-xagLQeObGeLVeHQOo'
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '6742290226' // Using your provided chat ID
 

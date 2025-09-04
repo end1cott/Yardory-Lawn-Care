@@ -7,6 +7,8 @@ import { Toc } from '@/components/Toc'
 import { ImageModal } from '@/components/ImageModal'
 import { getBaseUrl } from '@/src/lib/seo'
 
+export const runtime = 'edge'
+
 export async function generateStaticParams() {
   const slugs = await getPostSlugs()
   return slugs.map(slug => ({ slug }))

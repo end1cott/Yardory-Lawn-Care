@@ -1,0 +1,11 @@
+name = "mowjet"
+compatibility_date = "2025-09-03"
+
+pages_build_output_dir = ".vercel/output/static"
+
+[build]
+command = "npm run pages:build"
+output_directory = ".vercel/output/static"
+
+[build.environment]
+NODE_VERSION = "20"
