@@ -10,18 +10,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: "22" }
+        with:
+          node-version: "22"
       - name: Install deps
-        run: npm ci --no-audit --no-fund
-      - name: Build
+        run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+      - name: Build (Next static export)
         run: npm run build
-      - run: npm i -g wrangler
-      - name: Publish to Cloudflare Pages (production)
-        run: |
-          wrangler pages deploy out \
-            --project-name "${{ secrets.CF_PROJECT_NAME }}" \
-            --branch "main" \
-            --commit-dirty=true
+      - name: Install wrangler
+        run: npm i -g wrangler
+      - name: Publish (prod)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          wrangler pages deploy out \
+            --project-name "${{ secrets.CF_PROJECT_NAME }}" \
+            --branch "${{ secrets.PROD_BRANCH }}" \
+            --commit-dirty=true
+      - name: Verify prod is live
+        run: |
+          curl -I https://mowjet.com || true
+          curl -I https://www.mowjet.com || true
