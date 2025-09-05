@@ -18,7 +18,7 @@ jobs:
       - run: npm i -g wrangler
       - name: Publish to Cloudflare Pages (production)
         run: |
-          wrangler pages deploy . \
+          wrangler pages deploy out \
             --project-name "${{ secrets.CF_PROJECT_NAME }}" \
             --branch "main" \
             --commit-dirty=true

@@ -6,6 +6,8 @@ import ru from '@/src/i18n/seo/ru'
 import JsonLd from '@/src/components/JsonLd'
 import QuoteForm from './quote-form'
 
+export const dynamic = 'force-static'
+
 export async function generateMetadata(): Promise<Metadata> {
   const pathname = '/quote'
   const locale = getLocaleFromPath(pathname)
@@ -19,12 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
   })
 }
 
-export default async function QuotePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ freq?: string }>
-}) {
-  const params = await searchParams
+export default function QuotePage() {
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -51,7 +48,7 @@ export default async function QuotePage({
         <div className="container max-w-3xl">
           <h1 className="text-3xl font-semibold mb-4">Get your quote</h1>
           <p className="text-gray-600 mb-6">Response in 5–10 minutes. No spam. Get an accurate estimate for your lawn care needs.</p>
-          <QuoteForm initialFreq={params.freq} />
+          <QuoteForm />
         </div>
       </div>
     </>

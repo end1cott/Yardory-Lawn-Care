@@ -1,0 +1,9 @@
+.next/
+node_modules/
+.vercel/
+.git/
+.github/
+*.log
+.DS_Store
+.env*
+temp-deploy*/
